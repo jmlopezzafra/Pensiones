@@ -1,0 +1,92 @@
+{
+  "version": "junio26_v2",
+  "fecha": "2026-06-25",
+  "horizonte": "2023-2053",
+  "supuestos_clave": [
+    "TAKE_UP T1-T4 no nulo (2/3/5/7%), resto sin cambios (10/25/40/45/50/50%)",
+    "Tipo efectivo IRPF y renta media por tramo: AEAT 2023 real (Tabla505/587), no bracket marginal",
+    "Tasa SS total: 28.9% = 28.3% contingencias comunes (tipo legal 2023, no el 31% sin trazar) + 0.6% Mecanismo de Equidad Intergeneracional (MEI, Ley 21/2021, Orden PCM/74/2023), corregido 2026-06-26 (dictamen revisor ronda 3)",
+    "Poblacion Hombres y Mujeres: mecanismo UNICO homogeneizado (2026-06-26) -- distribucion real 2023 + salidas reales (Salidas_Anuales) + movilidad P_obs propia de cada sexo, cohorte cerrada, SIN reescalado cruzado entre sexos (sustituye la version anterior, donde Hombres se cargaba tal cual de un Excel con mecanismo distinto -- ver docstring HOMOGENEIZACION)",
+    "Gini: dos cortes transversales independientes (2023 y 2053), no carrera individual completa",
+    "Factor de conversion a renta vitalicia: calculado por cohorte (no exogeno) a partir de tablas INE 36774_H/M.xlsx, i_tecnico=2%, jubilacion a los 67"
+  ],
+  "limitaciones_metodologicas": [
+    "Identificacion de las matrices de transicion Markov (P_obs): estimadas a partir de marginales agregados por tramo/año, sin datos de panel individual (MCVL u otra fuente longitudinal). No se dispone de la matriz de transicion individual verdadera; P_obs es una aproximacion agregada y se declara como limitacion, no se intenta una nueva identificacion en esta version.",
+    "Factor de conversion a renta vitalicia: anualidad inmediata de nivel constante, sin indexacion, sin reversion a beneficiarios, sin recargo de gastos de gestion en la fase de pago (los gastos de gestion ya se aplican en fase de acumulacion via C_GES). El tipo tecnico (2%) se iguala a R_BASE por simplicidad, no es necesariamente el tipo tecnico que aplicaria una aseguradora real.",
+    "Rentabilidad del fondo determinista (no estocastica): se acota con un analisis de sensibilidad (ver 'sensibilidad_fondo_2053_M€'), pero no sustituye una simulacion de riesgo de mercado/longevidad con trayectorias aleatorias.",
+    "Alcance: simulacion del FPEPE espanol unicamente; no incluye comparacion internacional con otros sistemas (ver decision de alcance 2026-06-25).",
+    "Cohorte cerrada: el modelo no incorpora nuevas incorporaciones (jovenes que entran al mercado de trabajo) durante 2023-2053 para ningun sexo; el total poblacional decrece mecanicamente por jubilacion y mortalidad sin reposicion. Limitacion preexistente, ahora simetrica y explicita para Hombres y Mujeres tras la homogeneizacion del 2026-06-26."
+  ],
+  "factor_conversion_renta_vitalicia": {
+    "metodologia": "Anualidad-cohorte (diagonal edad x año proyectado), i_tecnico=2%, edad jubilacion=67, tabla INE 36774_H/M (qx por mil, 2023-2073)",
+    "jubilacion_2023": {
+      "H": 14.617,
+      "M": 17.266,
+      "unisex": 15.767
+    },
+    "jubilacion_2053": {
+      "H": 15.898,
+      "M": 18.037,
+      "unisex": 16.94
+    },
+    "gini_2023_con_bAV_factor_unisex": 0.5761,
+    "nota_unisex": "Gini con factor unisex calculado con las mismas seeds que el factor por sexo -- la diferencia frente a gini_2023_con_bAV aisla el efecto puro del factor actuarial (relevante para la discusion legal Test-Achats/Directiva 2004/113/CE)"
+  },
+  "resultados": {
+    "coste_fiscal_bruto_total_M€": -206030.0,
+    "irpf_perdido_total_M€": 114111.0,
+    "ss_perdido_total_M€": 91919.0,
+    "fondo_privado_2053_M€": 483678.0,
+    "pct_PIB_2023_coste_fiscal_acumulado_30a": -13.75,
+    "pct_PIB_2023_coste_fiscal_anualizado": -0.458,
+    "pct_PIB_2023_fondo_acumulado_30a": 32.29,
+    "gini_2023_sin_bAV": 0.5683,
+    "gini_2023_con_bAV": 0.5761,
+    "gini_2053_sin_bAV": 0.7658,
+    "gini_2053_con_bAV": 0.7648
+  },
+  "sensibilidad_fondo_2053_M€": {
+    "r=1.0%": 403543.0,
+    "r=2.0%": 483678.0,
+    "r=3.5%": 640009.0
+  },
+  "escenarios_compensacion_SS": {
+    "0": {
+      "compensado_M€": 0.0,
+      "balance_final_M€": -91919.0,
+      "anual_M€": 0.0,
+      "pct_PIB_anual": 0.0
+    },
+    "25": {
+      "compensado_M€": 22980.0,
+      "balance_final_M€": -68939.0,
+      "anual_M€": 766.0,
+      "pct_PIB_anual": 0.051
+    },
+    "50": {
+      "compensado_M€": 45960.0,
+      "balance_final_M€": -45960.0,
+      "anual_M€": 1532.0,
+      "pct_PIB_anual": 0.102
+    },
+    "75": {
+      "compensado_M€": 68939.0,
+      "balance_final_M€": -22980.0,
+      "anual_M€": 2298.0,
+      "pct_PIB_anual": 0.153
+    },
+    "100": {
+      "compensado_M€": 91919.0,
+      "balance_final_M€": -0.0,
+      "anual_M€": 3064.0,
+      "pct_PIB_anual": 0.205
+    }
+  },
+  "analisis_estado_vs_pensionista_2053": {
+    "nota": "Solo entre adoptantes del corte transversal 2053; el resto de la poblacion no cambia nada por construccion del modelo.",
+    "n_adoptantes_2053": 1391093.0,
+    "ahorro_publico_anual_2053_M€": 3564.2,
+    "coste_fiscal_anual_medio_acumulacion_M€": 6867.7,
+    "ganancia_neta_pensionistas_2053_M€_año": 9872.1
+  }
+}

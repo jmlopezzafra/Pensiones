@@ -1,0 +1,28 @@
+{
+  "voluntario_actual": {
+    "coste_fiscal_30a_M€": 206030.0,
+    "fondo_2053_M€": 483678.0,
+    "pct_PIB_coste_acumulado": 13.75,
+    "pct_PIB_fondo_2053": 32.29
+  },
+  "autoenrolment_optout_85pct": {
+    "coste_fiscal_30a_M€": 445338.0,
+    "fondo_2053_M€": 1159136.0,
+    "pct_PIB_coste_acumulado": 29.73,
+    "pct_PIB_fondo_2053": 77.38
+  },
+  "obligatorio_universal_100pct": {
+    "coste_fiscal_30a_M€": 523927.0,
+    "fondo_2053_M€": 1363689.0,
+    "pct_PIB_coste_acumulado": 34.98,
+    "pct_PIB_fondo_2053": 91.03
+  },
+  "estres_r=-1.0%": {
+    "coste_fiscal_30a_M€": 206030.0,
+    "fondo_2053_M€": 285081.0
+  },
+  "estres_r=0.0%": {
+    "coste_fiscal_30a_M€": 206030.0,
+    "fondo_2053_M€": 338313.0
+  }
+}
