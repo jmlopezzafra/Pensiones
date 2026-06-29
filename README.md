@@ -1,6 +1,6 @@
 # Viabilidad del modelo bAV para el sistema español de pensiones — material de reproducibilidad
 
-Este repositorio acompaña al trabajo *"Viabilidad del modelo bAV (Entgeltumwandlung) para el sistema español de pensiones: una microsimulación de cohorte cerrada mediante cadenas de Markov sobre 20,9 millones de cotizantes (2023-2053)"*. Contiene el código fuente de la microsimulación, las matrices de movilidad observada (P_obs) efectivamente utilizadas, y los ficheros de resultados completos (CSV y JSON) sobre los que se basan todas las cifras, tablas y figuras del paper.
+Este repositorio acompaña al trabajo *"Viabilidad del modelo bAV (Entgeltumwandlung) para el sistema español de pensiones: una microsimulación de cohorte cerrada mediante cadenas de Markov (2023-2053)"*. Contiene el código fuente de la microsimulación, las matrices de movilidad observada (P_obs) efectivamente utilizadas, y los ficheros de resultados completos (CSV y JSON) sobre los que se basan todas las cifras, tablas y figuras del paper.
 
 ## Estructura
 
